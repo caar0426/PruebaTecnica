@@ -1,0 +1,56 @@
+
+<div class="container">
+  <h2>Listado de Sucursales</h2>
+  <div>
+    <ng-template #modalContent>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Confirmar Eliminación</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="goToCloseModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Estas seguro de <strong> eliminar</strong> el registro identificado con Id {{ this.parametro }} 
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" (click)="deleteSucursal(this.parametro)">Confirmar</button>
+        <button class="btn btn-secondary" (click)="goToCloseModal()">Cancelar</button>
+      </div>
+    </ng-template>
+
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Código</th>
+        <th>Descripción</th>
+        <th>Dirección</th>
+        <th>Identificación</th>
+        <th>Fecha de Creación</th>
+        <th>Moneda</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="sucursales">
+      <tr *ngFor="let sucursal of sucursales">
+        <td>{{ sucursal.id }}</td>
+        <td>{{ sucursal.codigo }}</td>
+        <td>{{ sucursal.descripcion }}</td>
+        <td>{{ sucursal.direccion }}</td>
+        <td>{{ sucursal.identificacion }}</td>
+        <td>{{ sucursal.fechaCreacionString }}</td>
+        <td>{{ sucursal.monedaString }}</td>
+        <td>
+          <button class="btn btn-primary" (click)="goToEdit(sucursal.id)">Editar</button> | 
+          <button class="btn btn-danger" (click)="goToOpenModal(modalContent,sucursal.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-success" (click)="goToCreate()">Crear Sucursal</button> | 
+  <button class="btn btn-success" (click)="goToRefresh()">Refrescar Listado</button>
+</div>

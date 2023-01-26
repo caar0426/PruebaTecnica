@@ -1,0 +1,38 @@
+<div class="container">
+    <h2>Modificar Sucursal</h2>
+    <form [formGroup]="formularioModificar" (ngSubmit)="onSubmit()">
+      <input type="hidden" formControlName="id" class="form-control" id="id">
+      <div class="form-group">
+        <label for="codigo">Código:</label>
+        <input type="text" formControlName="codigo" class="form-control" id="codigo">
+      </div>
+      <div class="form-group">
+        <label for="descripcion">Descripción:</label>
+        <input type="text" formControlName="descripcion" class="form-control" id="descripcion">
+      </div>
+      <div class="form-group">
+        <label for="direccion">Dirección:</label>
+        <input type="text" formControlName="direccion" class="form-control" id="direccion">
+      </div>
+      <div class="form-group">
+        <label for="identificacion">Identificación:</label>
+        <input type="text" formControlName="identificacion" class="form-control" id="identificacion">
+      </div>
+      <div class="form-group">
+        <label for="fechaCreacion">Fecha de Creación:</label>
+        <input type="date" formControlName="fechaCreacion" class="form-control" id="fechaCreacion">
+      </div>
+      <div class="form-group">
+        <label for="monedaId">Nombre Tipo Moneda:</label>
+        <select formControlName="monedaId" class="form-control form-control-lg" id="monedaId">
+          <option *ngFor="let tipo of tipoMoneda" [value]="tipo.id">{{tipo.nombreTipo}}</option>
+        </select>
+      </div>
+      
+      <br>
+      <div class="form-group">
+        <button type="submit" class="btn btn-success">Modificar Sucursal</button> | 
+        <button class="btn btn-success" (click)="goToList()">Regresar A Sucursales</button>
+      </div>
+    </form>
+  </div>
